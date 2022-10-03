@@ -21,6 +21,7 @@ namespace MiAppMVC.Repo
         public List<Cliente> InicioCliente()
         {
             var listaCliente = _context.Cliente.ToList(); // select * from Cliente
+            var listCliente = _context.Cliente.ToList(); // select * from Cliente
 
             ///CONECTARA A LA BASE DE DATOS
             ///ABRIR LA BASE DE DATOS
