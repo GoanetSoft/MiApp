@@ -29,6 +29,7 @@ namespace MiAppMVC.Controllers
         public async Task<IActionResult> Index()
         {
             var listaCliente = _clienteRepo.InicioCliente();
+            var listCliente = _clienteRepo.InicioCliente();
 
             return View(listaCliente);
         }

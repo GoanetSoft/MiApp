@@ -38,6 +38,7 @@ namespace MiAppMVC.Repo
         {
 
             var cliente = _context.Cliente.FirstOrDefault(m => m.IdCliente == id);  // Select * from Cliente where idCliente= id
+            var client = _context.Cliente.FirstOrDefault(m => m.IdCliente == id);  // Select * from Cliente where idCliente= id
 
             return cliente;
         }
