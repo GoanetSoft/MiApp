@@ -33,6 +33,7 @@ namespace MiAppMVC
                 Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IClienteRepo, ClienteRepo>(); 
+            services.AddScoped<IUsuarioRepo, UsuarioRepo>(); 
 
         }
 
@@ -60,7 +61,7 @@ namespace MiAppMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Productos}/{action=Index}/{id?}");
             });
         }
     }

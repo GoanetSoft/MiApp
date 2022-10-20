@@ -1,0 +1,49 @@
+﻿@model MiAppMVC.Models.Usuarios
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Usuarios</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="idUsuario" />
+            <div class="form-group">
+                <label asp-for="usuario" class="control-label"></label>
+                <input asp-for="usuario" class="form-control" />
+                <span asp-validation-for="usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pass" class="control-label"></label>
+                <input asp-for="pass" class="form-control" />
+                <span asp-validation-for="pass" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="estado" /> @Html.DisplayNameFor(model => model.estado)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaAlta" class="control-label"></label>
+                <input asp-for="fechaAlta" class="form-control" />
+                <span asp-validation-for="fechaAlta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

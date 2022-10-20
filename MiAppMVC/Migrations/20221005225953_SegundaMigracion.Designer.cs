@@ -4,14 +4,16 @@ using MiAppMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MiAppMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221005225953_SegundaMigracion")]
+    partial class SegundaMigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,59 +103,6 @@ namespace MiAppMVC.Migrations
                     b.HasKey("IdProductos");
 
                     b.ToTable("Producto");
-                });
-
-            modelBuilder.Entity("MiAppMVC.Models.Usuarios", b =>
-                {
-                    b.Property<int>("idUsuario")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("estado")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("fechaAlta")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("pass")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("usuario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idUsuario");
-
-                    b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("MiAppMVC.Models.Ventas", b =>
-                {
-                    b.Property<int>("idVenta")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CantProducto")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Fecha_venta")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("TotalVenta")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("estado")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idCliente")
-                        .HasColumnType("int");
-
-                    b.HasKey("idVenta");
-
-                    b.ToTable("Ventas");
                 });
 #pragma warning restore 612, 618
         }
