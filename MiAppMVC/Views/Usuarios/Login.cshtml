@@ -1,0 +1,26 @@
+﻿@model  MiAppMVC.CarritoDTO.Login
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+<div class="col-md-4">
+    <form asp-action="Logueo" >
+        <div class="form-group">
+            <label asp-for="usuario" class="control-label"></label>
+            <input asp-for="usuario" class="form-control" />
+            <span asp-validation-for="usuario" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="pass" class="control-label"></label>
+            <input asp-for="pass" class="form-control" />
+            <span asp-validation-for="pass" class="text-danger"></span>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="btn btn-success" >Aceptar</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+        </div>
+    </form>
+ </div>

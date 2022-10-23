@@ -10,11 +10,13 @@ namespace MiAppMVC.Models
     {
         [Key]
         public int IdProductos { get; set; }
-        
+
         [Required] // not null
         [MaxLength(50)]
         public string Nombre { get; set; }
-
+        [Required]
+        [MaxLength(100)]
+        public string Descripcion { get; set; }
         [Required]
         public decimal Precio { get; set; }
         [Required]
@@ -22,5 +24,20 @@ namespace MiAppMVC.Models
         public DateTime FechaAlta { get; set; }
         public DateTime FechaBaja { get; set; }
         public bool Estado { get; set; }
+
+        [Required]
+        public int idMarca { get; set; }
+
+        [Required]
+        public int stock { get; set; }
+
+        [Required]
+        public string modelo { get; set; }
+
+        [Required]
+        public string proveedor { get; set; }
+        [Required]
+        public string imagen { get; set; }
+
     }
 }

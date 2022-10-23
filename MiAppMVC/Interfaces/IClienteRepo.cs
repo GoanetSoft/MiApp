@@ -10,6 +10,8 @@ namespace MiAppMVC.Interfaces
     {
         public List<Cliente> InicioCliente();
         public Cliente DetalleCliente(int? id);
+        public Cliente CrearCliente(Cliente cliente);
+
 
     }
 }
