@@ -31,9 +31,9 @@ namespace MiAppMVC
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<IClienteRepo, ClienteRepo>(); 
-
+            //unir controlador con la logica
+            services.AddScoped<IClienteRepo, ClienteRepo>();
+            services.AddScoped<IUsuariosRepo, UsuariosRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +60,7 @@ namespace MiAppMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Productos}/{action=Index}/{id?}");
             });
         }
     }

@@ -16,9 +16,15 @@ namespace MiAppMVC.Data
         }
 
         public DbSet<Cliente> Cliente {get;set;} // esta propiedad es la que se va ainteractuar con la tabla Cliente de mi base de datos
-        public DbSet<Productos> Producto { get; set; }
-        
-        
+        public DbSet<Productos> Productos { get; set; }
+
+        public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
+      
+
+
+
+
         // add-migration PrimeraMigracion
         // update-database
 
