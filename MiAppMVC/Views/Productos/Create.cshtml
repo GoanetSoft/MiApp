@@ -44,6 +44,36 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="idMarca" class="control-label"></label>
+                <input asp-for="idMarca" class="form-control" />
+                <span asp-validation-for="idMarca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stock" class="control-label"></label>
+                <input asp-for="stock" class="form-control" />
+                <span asp-validation-for="stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="modelo" class="control-label"></label>
+                <input asp-for="modelo" class="form-control" />
+                <span asp-validation-for="modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="proveedor" class="control-label"></label>
+                <input asp-for="proveedor" class="form-control" />
+                <span asp-validation-for="proveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagen" class="control-label"></label>
+                <input type="file" asp-for="imagen" class="form-control" />
+                <span asp-validation-for="imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
