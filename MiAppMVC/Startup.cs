@@ -34,6 +34,7 @@ namespace MiAppMVC
             //unir controlador con la logica
             services.AddScoped<IClienteRepo, ClienteRepo>();
             services.AddScoped<IUsuariosRepo, UsuariosRepo>();
+            services.AddScoped<IProductosRepo, ProductosRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

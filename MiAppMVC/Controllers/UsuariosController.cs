@@ -49,7 +49,7 @@ namespace MiAppMVC.Controllers
                 return NotFound();
             }
 
-            return View(usuarios);
+            return View();
         }
 
         // GET: Usuarios/Create
@@ -122,7 +122,7 @@ namespace MiAppMVC.Controllers
 
             if (_logueo)
             {
-                return View("Views/Productos/Index.cshtml");
+                return View("Views/Productos/Indexlogueado.cshtml");
             }
             else
             {

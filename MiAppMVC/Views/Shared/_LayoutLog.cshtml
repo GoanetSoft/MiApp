@@ -19,8 +19,8 @@
     <body>
 
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container px-4 px-lg-5 d-inline ">               
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5 d-inline">               
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-1 mb-lg-0 ms-lg-5">
@@ -55,17 +55,25 @@
                                 Cart
                                 <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                             </button>
-                            <button class="btn btn-success" type="submit" asp-controller="Usuarios" asp-action="Create">
 
-                                Registrarse
+                            @*<button class="btn btn-info" type="submit"asp-controller="" asp-action="">
 
-                            </button>
-                            <button class="btn btn-info" type="submit" asp-controller="Usuarios" asp-action="Login">
+            NombreUsuario
 
-                                Login
+        </button>*@
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            </button>
-                           
+                                    NombreUsuario
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
