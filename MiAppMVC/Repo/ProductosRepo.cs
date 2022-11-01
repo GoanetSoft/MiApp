@@ -40,11 +40,11 @@ namespace MiAppMVC.Repo
         {
             var existe = _context.Productos.Where(p => p.Nombre == producto.Nombre && p.proveedor == producto.proveedor);
 
-            if (existe != null)
+            if (existe.Count() == 0)
             {
-                _context.Productos.Add(producto);
+                producto.FechaAlta = DateTime.Now;
 
-                
+                _context.Productos.Add(producto);                
 
             }
 
@@ -61,8 +61,8 @@ namespace MiAppMVC.Repo
                 objeto.Nombre = producto.Nombre;
                 objeto.Precio = producto.Precio;
                 objeto.IdCategoria = producto.IdCategoria;
-                objeto.FechaAlta = producto.FechaAlta;
-                objeto.FechaBaja = producto.FechaBaja;
+                //objeto.FechaAlta = producto.FechaAlta;
+                //objeto.FechaBaja = producto.FechaBaja;
                 objeto.Estado = producto.Estado;
                 objeto.Descripcion = producto.Descripcion;
                 objeto.idMarca = producto.idMarca;

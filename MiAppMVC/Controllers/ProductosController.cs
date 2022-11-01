@@ -47,13 +47,24 @@ namespace MiAppMVC.Controllers
         // POST: Productos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
+        //[ValidateAntiForgeryToken]       
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProductos,Nombre,Precio,IdCategoria,FechaAlta,FechaBaja,Estado")] Productos productos)
+        public async Task<IActionResult> Create([Bind("IdProductos,Nombre,Precio,IdCategoria,FechaAlta,FechaBaja,Estado,stock,modelo,proveedor,imagen")] Productos productos)
         {
             var productoNuevo = _productosRepo.Nuevo(productos);
 
-            return View(productoNuevo);
+            if (productoNuevo == 0)
+            {
+                //mostrar mensaje "no se pudo agregar el producto nuevo"
+                //return view create
+                //
+            }
+
+            List<Productos> lista = _productosRepo.ListaProductos();
+
+
+            return RedirectToAction("index", "Productos");
         }
 
         // GET: Productos/Edit/5

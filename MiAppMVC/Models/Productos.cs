@@ -11,15 +11,15 @@ namespace MiAppMVC.Models
     {
         [Key]
         public int IdProductos { get; set; }
-        
+
         [Required] // not null
         [MaxLength(50)]
         public string Nombre { get; set; }
-        [Required]
+
         [MaxLength(100)]
         public string Descripcion { get; set; }
         [Required]
-        [Column(TypeName="decimal(18,2)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Precio { get; set; }
         [Required]
         public int IdCategoria { get; set; }   // 1-Televisores, 2-Informatica, 3-Hogar, 4-Indumentaria
@@ -38,8 +38,8 @@ namespace MiAppMVC.Models
 
         [Required]
         public string proveedor { get; set; }
-        [Required]
-        public string imagen { get; set; }
+
+        public byte[]  imagen { get; set; }
         
     }
 }
