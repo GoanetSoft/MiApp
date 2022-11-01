@@ -80,7 +80,7 @@ namespace MiAppMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProductos,Nombre,Precio,IdCategoria,FechaAlta,FechaBaja,Estado")] Productos productos)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProductos,Nombre,Precio,IdCategoria,FechaAlta,FechaBaja,Estado,stock,modelo,proveedor,imagen")] Productos productos)
         {
             var productoModificado = _productosRepo.Modificar(productos);
           
