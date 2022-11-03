@@ -9,6 +9,8 @@ using MiAppMVC.Data;
 using MiAppMVC.Models;
 using MiAppMVC.CarritoDTO;
 using MiAppMVC.Interfaces;
+using System.Web;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MiAppMVC.Controllers
 {
@@ -42,14 +44,28 @@ namespace MiAppMVC.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.idUsuario == id);
+            var usuarios = _usuariosRepo.Detalle(id);
+
             if (usuarios == null)
             {
-                return NotFound();
+                var msj = "usuario no encontrado";
+                string script = string.Format("alert('Bienvenido:{0}');", msj);
+
+                ClientScriptManager 
+                return Content(script);
             }
 
             return View();
+        }
+
+        private string mensaje(string texto)
+        {
+            
+            string script = string.Format("alert('Bienvenido:{0}');", texto);
+           
+
+            return script;
+
         }
 
         // GET: Usuarios/Create

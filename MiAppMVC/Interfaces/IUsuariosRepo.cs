@@ -17,5 +17,6 @@ namespace MiAppMVC.Interfaces
         public Usuarios Usuario(int? id);
 
         public List<Usuarios> ListadoUsuarios();
+        public Usuarios Detalle(int? id);
     }
 }

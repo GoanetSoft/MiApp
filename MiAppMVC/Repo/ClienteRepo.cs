@@ -42,5 +42,14 @@ namespace MiAppMVC.Repo
 
             return cliente;
         }
+
+        public Cliente DetalleCliente(string dni)
+        {
+
+            var cliente = _context.Cliente.FirstOrDefault(m => m.Documento == dni );  // Select * from Cliente where idCliente= id
+
+
+            return cliente;
+        }
     }
 }

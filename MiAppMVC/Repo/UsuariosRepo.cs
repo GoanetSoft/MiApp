@@ -76,6 +76,14 @@ namespace MiAppMVC.Repo
             return existe;
         }
 
+        public Usuarios Detalle(int? id)
+        {
+            var obj = _context.Usuarios.Where(u => u.idUsuario == id).FirstOrDefault();
+
+
+            return obj;
+        }
+
     }
 
    

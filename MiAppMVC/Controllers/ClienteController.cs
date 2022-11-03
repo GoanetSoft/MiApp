@@ -34,6 +34,23 @@ namespace MiAppMVC.Controllers
             return View(listaCliente);
         }
 
+        public async Task<IActionResult> Details(string dni)
+        {
+            var cliente = _clienteRepo.DetalleCliente(dni);
+
+            if (cliente == null)
+            {
+
+                //una vista con un texbox y un boton 
+                // devuelven mensaje
+            }
+            else
+            {
+                 cliente = _clienteRepo.DetalleCliente(cliente.IdCliente);
+            }
+
+            return View(cliente);
+        }
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

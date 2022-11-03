@@ -56,9 +56,20 @@ namespace MiAppMVC.Controllers
 
             if (productoNuevo == 0)
             {
+                 
+
+                  // string menssage = "Hola soy un mensaje";
+
+                //  < p > @await DoSomething("hello", "world") </ p >
+
+
+                //}
+                // @< p > @menssage </ p >
+                //  @Html.Raw("<span>Hello World</span>")
                 //mostrar mensaje "no se pudo agregar el producto nuevo"
                 //return view create
                 //
+
             }
 
             List<Productos> lista = _productosRepo.ListaProductos();
