@@ -84,7 +84,23 @@ namespace MiAppMVC.Repo
             return obj;
         }
 
+        public int Eliminar(int? id)
+        {
+            var objeto = _context.Usuarios.Where(p => p.idUsuario == id).FirstOrDefault();
+            if (objeto != null)
+            {
+                objeto.estado = false;
+                
+
+                _context.Update(objeto);
+
+
+            }
+
+            return _context.SaveChanges();
+        }
     }
+}
 
    
-}
+

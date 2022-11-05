@@ -15,9 +15,16 @@ namespace MiAppMVC.Repo
 
         public ClienteRepo(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentException(nameof(context));
         }
+        public Cliente Cliente(int? id)
 
+        {
+            var cliente = _context.Cliente.FirstOrDefault(p => p.IdCliente == id);
+
+
+            return cliente;
+        }
         public List<Cliente> InicioCliente()
         {
             var listaCliente = _context.Cliente.ToList(); // select * from Cliente
@@ -50,6 +57,34 @@ namespace MiAppMVC.Repo
 
 
             return cliente;
+        }
+
+        public int Create(Cliente cliente)
+        {
+           
+
+            cliente.Estado = true;
+
+            _context.Add(cliente);
+
+            var resultado = _context.SaveChanges();
+            return resultado;
+                
+        }
+
+        public int Modificar(Cliente cliente)
+        {
+            var objeto = _context.Cliente.Where(c => c.IdCliente == cliente.IdCliente).FirstOrDefault();
+
+            if (objeto != null)
+            {
+                objeto.IdCliente = cliente.IdCliente;
+                objeto.Nombre = cliente.Nombre;
+                objeto.RazonSocial = cliente.RazonSocial;
+                objeto.Documento = cliente.Documento;
+            }
+
+            return _context.SaveChanges();
         }
     }
 }

@@ -29,6 +29,10 @@ namespace MiAppMVC.Controllers
             var lista = _productosRepo.ListaProductos();
             return View(lista);
         }
+        public async Task<IActionResult> TodosLosProductos()
+        {
+            return View();
+        }
 
         // GET: Productos/Details/5
         public async Task<IActionResult> Details(int? id)

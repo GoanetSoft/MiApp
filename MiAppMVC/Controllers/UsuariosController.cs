@@ -25,11 +25,7 @@ namespace MiAppMVC.Controllers
            
 
         }
-        //public UsuariosController(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
-
+       
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
@@ -37,6 +33,7 @@ namespace MiAppMVC.Controllers
         }
 
         // GET: Usuarios/Details/5
+       
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,14 +45,15 @@ namespace MiAppMVC.Controllers
 
             if (usuarios == null)
             {
-                var msj = "usuario no encontrado";
-                string script = string.Format("alert('Bienvenido:{0}');", msj);
 
-                ClientScriptManager 
-                return Content(script);
+                //var msj = "usuario no encontrado";
+                //string script = string.Format("alert('Bienvenido:{0}');", msj);
+
+                ////ClientScriptManager; 
+                //return Content(script);
             }
 
-            return View();
+            return View(usuarios);
         }
 
         private string mensaje(string texto)
@@ -113,6 +111,7 @@ namespace MiAppMVC.Controllers
                 return NotFound();
             }
             return View(usuarios);
+
         }
 
         // POST: Usuarios/Edit/5
@@ -146,32 +145,24 @@ namespace MiAppMVC.Controllers
             }
           
         }
-        // GET: Usuarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+       
+            public async Task<IActionResult> Delete(int? id)
 
-            var usuarios = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.idUsuario == id);
-            if (usuarios == null)
-            {
-                return NotFound();
-            }
+             {
 
-            return View(usuarios);
-        }
+            var UsuarioEliminado = _usuariosRepo.Usuario(id);
+            return View(UsuarioEliminado);
+            
+             }
 
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuarios = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuarios);
-            await _context.SaveChangesAsync();
+            var UsuarioEliminado = _usuariosRepo.Eliminar(id);
+
             return RedirectToAction(nameof(Index));
         }
 

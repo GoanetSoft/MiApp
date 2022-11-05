@@ -24,7 +24,7 @@ namespace MiAppMVC.Models
         [MaxLength(11)] // Dni= 12345678 , Cuit/cuil 12123456789
         public string Documento { get; set; }
 
-        [Required]
+        
         public bool Estado { get; set; }
 
     }

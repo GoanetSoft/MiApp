@@ -61,7 +61,7 @@ namespace MiAppMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Productos}/{action=Index}/{id?}");
+                    pattern: "{controller=Productos}/{action=TodosLosProductos}/{id?}");
             });
         }
     }

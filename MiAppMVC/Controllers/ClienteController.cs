@@ -16,10 +16,7 @@ namespace MiAppMVC.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IClienteRepo _clienteRepo;
 
-        //public ClientesController(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
+        
         public ClienteController(IClienteRepo clienteRepo)
         {
             _clienteRepo = clienteRepo ?? throw new ArgumentException(nameof(clienteRepo));
@@ -36,6 +33,7 @@ namespace MiAppMVC.Controllers
 
         public async Task<IActionResult> Details(string dni)
         {
+
             var cliente = _clienteRepo.DetalleCliente(dni);
 
             if (cliente == null)
@@ -46,7 +44,7 @@ namespace MiAppMVC.Controllers
             }
             else
             {
-                 cliente = _clienteRepo.DetalleCliente(cliente.IdCliente);
+                cliente = _clienteRepo.DetalleCliente(cliente.IdCliente);
             }
 
             return View(cliente);
@@ -72,29 +70,28 @@ namespace MiAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCliente,Nombre,RazonSocial,Documento,Estado")] Cliente cliente)
         {
+           
+
+            int resultado = 0;
+
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                resultado = _clienteRepo.Create(cliente);
+
             }
             return View(cliente);
         }
 
         // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var cliente = await _context.Cliente.FindAsync(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
+        {
+            
+            var cliente = _clienteRepo.Cliente(id);
+
             return View(cliente);
+
+           
         }
 
         // POST: Clientes/Edit/5
@@ -104,33 +101,11 @@ namespace MiAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Nombre,RazonSocial,Documento,Estado")] Cliente cliente)
         {
-            if (id != cliente.IdCliente)
-            {
-                return NotFound();
-            }
+            var clienteModificado = _clienteRepo.Modificar(cliente);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(cliente);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClienteExists(cliente.IdCliente))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
             return View(cliente);
         }
+    
 
         // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -18,5 +18,6 @@ namespace MiAppMVC.Interfaces
 
         public List<Usuarios> ListadoUsuarios();
         public Usuarios Detalle(int? id);
+        public int Eliminar(int? id);
     }
 }
