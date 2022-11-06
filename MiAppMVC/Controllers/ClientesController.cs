@@ -16,10 +16,7 @@ namespace MiAppMVC.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IClienteRepo _clienteRepo;
 
-        //public ClientesController(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
+                
         public ClientesController(IClienteRepo clienteRepo)
         {
             _clienteRepo = clienteRepo ?? throw new ArgumentException(nameof(clienteRepo));
