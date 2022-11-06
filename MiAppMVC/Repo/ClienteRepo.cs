@@ -53,7 +53,7 @@ namespace MiAppMVC.Repo
         public Cliente DetalleCliente(string dni)
         {
 
-            var cliente = _context.Cliente.FirstOrDefault(m => m.Documento == dni );  // Select * from Cliente where idCliente= id
+            var cliente = _context.Cliente.Where(m => m.Documento == dni).FirstOrDefault();  // Select * from Cliente where idCliente= id
 
 
             return cliente;

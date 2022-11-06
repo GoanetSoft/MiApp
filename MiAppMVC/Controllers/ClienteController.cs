@@ -21,7 +21,7 @@ namespace MiAppMVC.Controllers
         {
             _clienteRepo = clienteRepo ?? throw new ArgumentException(nameof(clienteRepo));
         }
-
+        
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
@@ -35,6 +35,7 @@ namespace MiAppMVC.Controllers
         {
 
             var cliente = _clienteRepo.DetalleCliente(dni);
+            
 
             if (cliente == null)
             {
@@ -44,6 +45,7 @@ namespace MiAppMVC.Controllers
             }
             else
             {
+                
                 cliente = _clienteRepo.DetalleCliente(cliente.IdCliente);
             }
 
@@ -115,8 +117,7 @@ namespace MiAppMVC.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.IdCliente == id);
+            var cliente = await _context.Cliente.Where(m => m.IdCliente == id).FirstOrDefaultAsync();
             if (cliente == null)
             {
                 return NotFound();
