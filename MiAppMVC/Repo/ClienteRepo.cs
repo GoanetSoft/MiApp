@@ -25,10 +25,19 @@ namespace MiAppMVC.Repo
 
             return cliente;
         }
+
+        public Cliente Cliente(string dni)
+
+        {
+            var cliente = _context.Cliente.FirstOrDefault(p => p.Documento == dni);
+
+
+            return cliente;
+        }
         public List<Cliente> InicioCliente()
         {
             var listaCliente = _context.Cliente.ToList(); // select * from Cliente
-            var listCliente = _context.Cliente.ToList(); // select * from Cliente
+            //var listCliente = _context.Cliente.ToList(); // select * from Cliente
 
             ///CONECTARA A LA BASE DE DATOS
             ///ABRIR LA BASE DE DATOS
@@ -53,7 +62,7 @@ namespace MiAppMVC.Repo
         public Cliente DetalleCliente(string dni)
         {
 
-            var cliente = _context.Cliente.Where(m => m.Documento == dni).FirstOrDefault();  // Select * from Cliente where idCliente= id
+            var cliente = _context.Cliente.FirstOrDefault(m => m.Documento == dni);  // Select * from Cliente where idCliente= id
 
 
             return cliente;
@@ -82,9 +91,28 @@ namespace MiAppMVC.Repo
                 objeto.Nombre = cliente.Nombre;
                 objeto.RazonSocial = cliente.RazonSocial;
                 objeto.Documento = cliente.Documento;
+                objeto.Estado = cliente.Estado;
             }
 
             return _context.SaveChanges();
+        }
+
+        public int Eliminar(int? id)
+        {
+            var objeto = _context.Cliente.Where(c => c.IdCliente == id).FirstOrDefault();
+
+            if (objeto != null)
+            {
+                objeto.Estado = false;
+
+                _context.Update(objeto);
+
+
+            }
+
+            return _context.SaveChanges();
+
+           
         }
     }
 }

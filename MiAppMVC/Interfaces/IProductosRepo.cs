@@ -1,4 +1,5 @@
-﻿using MiAppMVC.Models;
+﻿using MiAppMVC.CarritoDTO;
+using MiAppMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace MiAppMVC.Interfaces
         public int Modificar(Productos producto);
 
         public int Eliminar(int? id);
+
+        public List<ProductosDTO> TodosLosProductos();
 
 
     }

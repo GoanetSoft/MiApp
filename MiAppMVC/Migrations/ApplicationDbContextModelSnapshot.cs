@@ -82,8 +82,8 @@ namespace MiAppMVC.Migrations
                     b.Property<int>("idMarca")
                         .HasColumnType("int");
 
-                    b.Property<string>("imagen")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("imagen")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("modelo")
                         .IsRequired()

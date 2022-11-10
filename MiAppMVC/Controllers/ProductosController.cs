@@ -31,6 +31,9 @@ namespace MiAppMVC.Controllers
         }
         public async Task<IActionResult> TodosLosProductos()
         {
+             var lista = _productosRepo.TodosLosProductos();
+            ViewBag.ListaProductos = lista;
+
             return View();
         }
 

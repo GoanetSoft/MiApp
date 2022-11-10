@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MiAppMVC.Models;
+using MiAppMVC.CarritoDTO;
 
 namespace MiAppMVC.Repo
 {
@@ -94,6 +95,27 @@ namespace MiAppMVC.Repo
             return _context.SaveChanges();
         }
 
+        public List<ProductosDTO> TodosLosProductos()
+        {
+            List<ProductosDTO> productos = new List<ProductosDTO>();
+
+            var lista = _context.Productos.ToList();
+
+            foreach (var li in lista)
+            {
+                ProductosDTO prod = new ProductosDTO();
+
+                prod.nombre = li.Nombre;
+                prod.imagen = li.imagen;
+                prod.importe = li.Precio;
+
+                productos.Add(prod);
+
+            }
+
+            return productos;
+
+        }
     }
 
 

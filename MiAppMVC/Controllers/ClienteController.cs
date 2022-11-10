@@ -25,31 +25,39 @@ namespace MiAppMVC.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            var listaCliente = _clienteRepo.InicioCliente();
+            
+            //cuando se loguen tienen que crear una variable Sesion (guardar toda la info de usuario incluido DNI)
+
+            //Sesion 
+            //cuando el cliente quiere modificar su perfil uds le piden el dni
+            //si el DNI es = Sesion.dni directamente ingresa a Editar cliente
+            var Cliente = _clienteRepo.InicioCliente();
       
 
-            return View(listaCliente);
+            return View(Cliente);
         }
-
+           
         public async Task<IActionResult> Details(string dni)
         {
 
             var cliente = _clienteRepo.DetalleCliente(dni);
-            
+
 
             if (cliente == null)
             {
 
                 //una vista con un texbox y un boton 
                 // devuelven mensaje
+                return View();
             }
             else
             {
-                
-                cliente = _clienteRepo.DetalleCliente(cliente.IdCliente);
+                return View(cliente);
+
+
             }
 
-            return View(cliente);
+            //return View(cliente);
         }
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -72,8 +80,6 @@ namespace MiAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCliente,Nombre,RazonSocial,Documento,Estado")] Cliente cliente)
         {
-           
-
             int resultado = 0;
 
             if (ModelState.IsValid)
@@ -96,6 +102,15 @@ namespace MiAppMVC.Controllers
            
         }
 
+        public async Task<IActionResult> Edit(string dni)
+        {
+
+            var cliente = _clienteRepo.Cliente(dni);
+
+            return View(cliente);
+
+
+        }
         // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -112,17 +127,7 @@ namespace MiAppMVC.Controllers
         // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cliente = await _context.Cliente.Where(m => m.IdCliente == id).FirstOrDefaultAsync();
-            if (cliente == null)
-            {
-                return NotFound();
-            }
-
+            var cliente = _clienteRepo.Cliente(id);
             return View(cliente);
         }
 
@@ -131,10 +136,9 @@ namespace MiAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
-            _context.Cliente.Remove(cliente);
-            await _context.SaveChangesAsync();
+            var ClientEliminado = _clienteRepo.Eliminar(id);
             return RedirectToAction(nameof(Index));
+
         }
 
         private bool ClienteExists(int id)
